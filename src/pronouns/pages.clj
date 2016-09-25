@@ -42,7 +42,7 @@
 
 (defn subject-example
   [subject]
-  (render-sentence (wrap-pronoun (s/capitalize subject)) " went to the park."))
+  (render-sentence (wrap-pronoun subject) " went to the park."))
 
 (defn object-example
   [object]
@@ -195,11 +195,11 @@
        [:div {:class "section examples"}
         [:p
          [:form {:method "GET"}
-          ;; [subject object possessive-determiner possessive-pronoun reflexive]
-          "they: " [:input {:type "text" :name "subject"}]
-          "them: " [:input {:type "text" :name "object"}]
-          "their: " [:input {:type "text" :name "possessive-determiner"}]
-          "theirs: " [:input {:type "text" :name "possessive-pronoun"}]
-          "themselves: " [:input {:type "text" :name "reflexive"}]
+          (println "in custom")
+          [:p (subject-example [:input {:type "text" :name "subject"}])
+           (object-example [:input {:type "text" :name "object"}])
+           (posessive-determiner-example "my friend" [:input {:type "text" :name "possessive-determiner"}])
+           (possessive-pronoun-example [:input {:type "text" :name "possessive-pronoun"}])
+           (reflexive-example "my friend" [:input {:type "text" :name "reflexive"}])]
           [:input {:type "submit" :value "make it so"}]]]]
        (footer-block)]])))

@@ -22,9 +22,10 @@
 (defn params->path
   [params]
   ;; [subject object possessive-determiner possessive-pronoun reflexive]
-  (s/join "/" (map (partial get params)
-                   ["subject" "object" "possessive-determiner" "possessive-pronoun" "reflexive"]))
-  )
+  (let [parts ["subject" "object" "possessive-determiner"
+               "possessive-pronoun" "reflexive"]
+        full-path (map (partial get params) parts)]
+    (s/join "/" full-path)))
 
 (defn slurp-tabfile [path]
   "read a tabfile from a filesystem <path> as a table"

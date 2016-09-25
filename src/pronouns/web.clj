@@ -47,8 +47,7 @@
                   :headers {"Content-Type" "text/html"}
                   :body (pages/custom)}
                  {:status 302
-                  :headers {"Location" (u/params->path params)}}))
-     )
+                  :headers {"Location" (u/params->path params)}})))
 
 
   (GET "/*" {params :params}
