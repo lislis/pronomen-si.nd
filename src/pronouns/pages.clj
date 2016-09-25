@@ -181,3 +181,25 @@
     (if (seq pronoun-declensions)
       (format-pronoun-examples pronoun-declensions)
       (not-found))))
+
+(defn custom []
+  (let [title "Pronoun Island: custom pronouns form"]
+    (html
+     [:html
+      [:head
+       [:title title]
+       [:meta {:name "viewport" :content "width=device-width"}]
+       [:link {:rel "stylesheet" :href "/pronouns.css"}]]
+      [:body
+       (header-block title)
+       [:div {:class "section examples"}
+        [:p
+         [:form {:method "GET"}
+          ;; [subject object possessive-determiner possessive-pronoun reflexive]
+          "they: " [:input {:type "text" :name "subject"}]
+          "them: " [:input {:type "text" :name "object"}]
+          "their: " [:input {:type "text" :name "possessive-determiner"}]
+          "theirs: " [:input {:type "text" :name "possessive-pronoun"}]
+          "themselves: " [:input {:type "text" :name "reflexive"}]
+          [:input {:type "submit" :value "make it so"}]]]]
+       (footer-block)]])))

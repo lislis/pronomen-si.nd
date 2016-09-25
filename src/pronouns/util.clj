@@ -19,6 +19,13 @@
 
 (defn print-and-return "for debugging" [x] (println x) x)
 
+(defn params->path
+  [params]
+  ;; [subject object possessive-determiner possessive-pronoun reflexive]
+  (s/join "/" (map (partial get params)
+                   ["subject" "object" "possessive-determiner" "possessive-pronoun" "reflexive"]))
+  )
+
 (defn slurp-tabfile [path]
   "read a tabfile from a filesystem <path> as a table"
   (let [lines (s/split (slurp path) #"\n")]

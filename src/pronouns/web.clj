@@ -39,6 +39,18 @@
      :headers {"Content-Type" "text/css"}
      :body (slurp (io/resource "pronouns.css"))})
 
+  (GET "/custom" {params :params}
+    (println params)
+    (comment) (u/print-and-return
+               (if (empty? params)
+                 {:status 200
+                  :headers {"Content-Type" "text/html"}
+                  :body (pages/custom)}
+                 {:status 302
+                  :headers {"Location" (u/params->path params)}}))
+     )
+
+
   (GET "/*" {params :params}
        {:status 200
         :headers {"Content-Type" "text/html"}
