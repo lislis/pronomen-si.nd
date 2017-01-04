@@ -1,3 +1,7 @@
+
+**The text below is the original readme of the pronoun.is project, which will be translated and adapted for this project.**
+
+________________
 **[pronoun.is](http://pronoun.is) is a website for personal pronoun usage examples**
 
 ## For users
@@ -63,4 +67,3 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
-

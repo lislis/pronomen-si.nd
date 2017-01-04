@@ -26,7 +26,7 @@
   (let [c (count items)]
     (cond
       (<= c 1) (or (first items) "")
-      (= c 2) (s/join " and " items)
+      (= c 2) (s/join " und " items)
       :else (str (s/join ", " (butlast items)) ", and " (last items)))))
 
 (defn href
@@ -40,56 +40,67 @@
 (defn render-sentence [& content]
   [:p [:span.sentence content]])
 
-(defn subject-example
-  [subject]
-  (render-sentence (wrap-pronoun (s/capitalize subject)) " went to the park."))
+; Fälle Beispiele
+(defn nominativ-beispiel
+  [nominativ]
+  (render-sentence (wrap-pronoun (s/capitalize nominativ)) " kocht eine leckere Suppe."))
 
-(defn object-example
-  [object]
-  (render-sentence "I went with " (wrap-pronoun object) "."))
+; (defn genetiv-beispiel
+;   [genetiv]
+;   (render-sentence "I went with " (wrap-pronoun genetiv) "."))
 
-(defn posessive-determiner-example
-  [subject possessive-determiner]
-  (render-sentence (wrap-pronoun (s/capitalize subject))
-                   " brought "
-                   (wrap-pronoun possessive-determiner)
-                   " frisbee."))
+(defn akkusativ-beispiel
+  [nominativ akkusativ]
+  (render-sentence (wrap-pronoun (s/capitalize nominativ))
+                   " hat "
+                   (wrap-pronoun akkusativ)
+                   " gestern gesehen."))
 
-(defn possessive-pronoun-example
-  [possessive-pronoun]
-  (render-sentence "At least I think it was "
-                   (wrap-pronoun possessive-pronoun)
-                   "."))
+(defn dativ-beispiel
+  [dativ]
+  (render-sentence "Ich möchte mit "
+                   (wrap-pronoun dativ)
+                   " ins Kino gehen."))
 
-(defn reflexive-example
-  [subject reflexive]
-  (render-sentence (wrap-pronoun (s/capitalize subject))
-                   " threw the frisbee to "
-                   (wrap-pronoun reflexive)
-                   "."))
+(defn possessiv-beispiel
+  [nominativ possessiv]
+  (render-sentence (wrap-pronoun (s/capitalize possessiv))
+                   "e Katze hat auf dem Sofa gepinkelt."))
+(defn relativ-n-beispiel
+  [nominativ relativ-n]
+  (render-sentence (wrap-pronoun (s/capitalize relativ-n))
+                   " zieht nächstes Jahr nach Berlin. "))
+(defn relativ-d-beispiel
+  [nominativ relativ-d]
+  (render-sentence "Er hat "
+                   (wrap-pronoun relativ-d)
+                   " ein Bademantel zum Geburtstag geschenkt."))
 
+; Divs
 (defn header-block [header]
   [:div {:class "section title"}
    (href "/" [:h1 header])])
 
 (defn examples-block
-  [subject object possessive-determiner possessive-pronoun reflexive]
-  (let [sub-obj (s/join "/" [subject object])
-        header-str (str "Here are some example sentences using my "
+  [nominativ akkusativ dativ genetiv possessiv relativ-n relativ-d]
+  (let [sub-obj (s/join "/" [nominativ akkusativ])
+        header-str (str "Hier sind einige Beispiele wie ich meine Pronomen ("
                         sub-obj
-                        " pronouns:")]
+                        ") benutze:")]
     [:div {:class "section examples"}
      [:h2 header-str]
-     [:p (subject-example subject)
-         (object-example object)
-         (posessive-determiner-example subject possessive-determiner)
-         (possessive-pronoun-example possessive-pronoun)
-         (reflexive-example subject reflexive)]]))
+     [:p (nominativ-beispiel nominativ)
+         ; (genetiv-beispiel genetiv)
+         (akkusativ-beispiel nominativ akkusativ)
+         (dativ-beispiel dativ)
+         (possessiv-beispiel nominativ possessiv)
+         (relativ-n-beispiel nominativ relativ-n)
+         (relativ-d-beispiel nominativ relativ-d)]]))
 
 (defn usage-block []
   [:div {:class "section usage"}
    [:p "Full usage: "
-       [:tt "http://pronoun.is/subject-pronoun/object-pronoun/possessive-determiner/possessive-pronoun/reflexive"]
+       [:tt "http://pronoun.is/nominativ/genetiv/akkusativ/dativ/possessiv/relativ-nominativ/relativ-dativ"]
        " displays examples of your pronouns."]
    [:p "This is a bit unwieldy. If we have a good guess we'll let you use"
        " just the first one or two."]])
@@ -98,23 +109,24 @@
   (let [twitter-name (fn [handle] (href (str "https://www.twitter.com/" handle)
                                        (str "@" handle)))]
     [:div {:class "section contact"}
-     [:p "Written by "
+     [:p "This is "
          (twitter-name "morganastra")
          ", whose "
          (href "http://pronoun.is/ze/zir?or=she" "pronoun.is/ze/zir?or=she")]
-     [:p "pronoun.is is free software under the "
+     [:p "Pronomen-si.nd is free software under the "
          (href "https://www.gnu.org/licenses/agpl.html" "AGPLv3")
          "! visit the project on "
-         (href "https://github.com/witch-house/pronoun.is" "github")]
+         (href "https://github.com/eribloodlust/pronomen-si.nd" "github")]
      [:p "<3"]]))
 
 (defn footer-block []
   [:footer (usage-block) (contact-block)])
 
+; Format
 (defn format-pronoun-examples
   [pronoun-declensions]
   (let [sub-objs (map #(s/join "/" (take 2 %)) pronoun-declensions)
-        title (str "Pronoun Island: " (prose-comma-list sub-objs) " examples")]
+        title (str "Pronomen-si.nd: " (prose-comma-list sub-objs) " Beispiele")]
     (html
      [:html
       [:head
@@ -129,8 +141,8 @@
 (defn lookup-pronouns [pronouns-string]
   (let [inputs (s/split pronouns-string #"/")
         n (count inputs)]
-    (if (>= n 5)
-      (take 5 inputs)
+    (if (>= n 7)
+      (take 7 inputs)
       (u/table-lookup inputs *pronouns-table*))))
 
 (defn make-link [path]
@@ -141,7 +153,7 @@
 (defn front []
   (let [abbreviations (u/abbreviate *pronouns-table*)
         links (map make-link abbreviations)
-        title "Pronoun Island"]
+        title "Pronomen-si.nd"]
     (html
      [:html
       [:head
@@ -151,13 +163,13 @@
       [:body
        (header-block title)
        [:div {:class "section table"}
-       [:p "pronoun.is is a website for personal pronoun usage examples"]
+       [:p "pronomen-si.nd is a website for personal pronoun usage examples"]
        [:p "here are some pronouns the site knows about:"]
        [:ul links]]]
       (footer-block)])))
 
 (defn not-found []
-  (let [title "Pronoun Island: English Language Examples"]
+  (let [title "Pronomen-si.nd: Deutsche Sprachbeispiele"]
     (html
      [:html
       [:head
@@ -173,7 +185,7 @@
 
 (defn pronouns [params]
   (let [path (params :*)
-        alts (or (params "or") [])
+        alts (or (params "oder") [])
         pronouns (concat [path] (u/vec-coerce alts))
         pronoun-declensions (filter some? (map #(lookup-pronouns
                                                  (escape-html %))

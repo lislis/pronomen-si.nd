@@ -1,5 +1,5 @@
 (defproject witch-house/pronouns "1.10.0-SNAPSHOT"
-  :description "Pronoun.is is a website for personal pronoun usage examples"
+  :description "_____"
   :url "http://pronoun.is"
   :license "GNU Affero General Public License 3.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
