@@ -99,20 +99,19 @@
 
 (defn usage-block []
   [:div {:class "section usage"}
-   [:p "Full usage: "
+   [:p ""
        [:tt "http://pronoun.is/nominativ/genetiv/akkusativ/dativ/possessiv/relativ-nominativ/relativ-dativ"]
-       " displays examples of your pronouns."]
-   [:p "This is a bit unwieldy. If we have a good guess we'll let you use"
-       " just the first one or two."]])
+       " zeigt Beispielesätze für ein beliebiges Pronomen an."]
+   [:p "Das ist noch etwas umständlich. Wenn das Pronomen, das du verwendest, bereits in unserem System enthalten ist, reicht es, lediglich den Nominativ einzugaben."]])
 
 (defn contact-block []
   (let [twitter-name (fn [handle] (href (str "https://www.twitter.com/" handle)
                                        (str "@" handle)))]
     [:div {:class "section contact"}
-     [:p "This is "
-         (twitter-name "morganastra")
-         ", whose "
-         (href "http://pronoun.is/ze/zir?or=she" "pronoun.is/ze/zir?or=she")]
+    ;  [:p "This is "
+    ;      (twitter-name "morganastra")
+    ;      ", whose "
+    ;      (href "http://pronoun.is/ze/zir?or=she" "pronoun.is/ze/zir?or=she")]
      [:p "Pronomen-si.nd ist freie Software unter der "
          (href "https://www.gnu.org/licenses/agpl.html" "AGPLv3")
          "! Besuche das Projekt auf "
