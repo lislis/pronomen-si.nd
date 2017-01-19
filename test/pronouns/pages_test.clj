@@ -4,7 +4,7 @@
 
 (fact "prose-comma-list turns a list of strings into a prose list with commas"
       (pages/prose-comma-list ["foo"]) => "foo"
-      (pages/prose-comma-list ["foo" "bar"]) => "foo and bar"
-      (pages/prose-comma-list ["foo" "bar" "baz"]) => "foo, bar, and baz"
-      (pages/prose-comma-list ["foo" "bar" "baz" "bobble"]) => "foo, bar, baz, and bobble"
+      (pages/prose-comma-list ["foo" "bar"]) => "foo und bar"
+      (pages/prose-comma-list ["foo" "bar" "baz"]) => "foo, bar, und baz"
+      (pages/prose-comma-list ["foo" "bar" "baz" "bobble"]) => "foo, bar, baz, und bobble"
       (pages/prose-comma-list []) => "")

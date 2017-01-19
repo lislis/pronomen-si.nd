@@ -84,7 +84,7 @@
 (defn examples-block
   [nominativ akkusativ dativ genetiv possessiv relativ-n relativ-d]
   (let [sub-obj (s/join "/" [nominativ akkusativ])
-        header-str (str "Hier sind einige Beispiele wie ich meine Pronomen ("
+        header-str (str "Hier sind einige Beispiele wie die Pronomen ("
                         sub-obj
                         ") benutze:")]
     [:div {:class "section examples"}
