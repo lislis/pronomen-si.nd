@@ -113,9 +113,9 @@
          (twitter-name "morganastra")
          ", whose "
          (href "http://pronoun.is/ze/zir?or=she" "pronoun.is/ze/zir?or=she")]
-     [:p "Pronomen-si.nd is free software under the "
+     [:p "Pronomen-si.nd ist freie Software unter der "
          (href "https://www.gnu.org/licenses/agpl.html" "AGPLv3")
-         "! visit the project on "
+         "! Besuche das Projekt auf "
          (href "https://github.com/eribloodlust/pronomen-si.nd" "github")]
      [:p "<3"]]))
 
@@ -163,8 +163,8 @@
       [:body
        (header-block title)
        [:div {:class "section table"}
-       [:p "pronomen-si.nd is a website for personal pronoun usage examples"]
-       [:p "here are some pronouns the site knows about:"]
+       [:p "pronomen-si.nd ist eine Webseite für Benutzungsbeispiele von Personalpronomen."]
+       [:p "Hier sind ein paar Pronomen die diese Seite kennt:"]
        [:ul links]]]
       (footer-block)])))
 
@@ -179,8 +179,8 @@
       [:body
        (header-block title)
       [:div {:class "section examples"}
-       [:p [:h2 (str "We couldn't find those pronouns in our database."
-                     "If you think we should have them, please reach out!")]]]
+       [:p [:h2 (str "Wir konnten diese Pronomen nicht in unserer Datenbank finden. "
+                     "Wenn du denkst wir sollten sie haben dann gib uns bitte Bescheid!")]]]
        (footer-block)]])))
 
 (defn pronouns [params]
