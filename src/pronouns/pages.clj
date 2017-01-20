@@ -112,10 +112,10 @@
     ;      (twitter-name "morganastra")
     ;      ", whose "
     ;      (href "http://pronoun.is/ze/zir?or=she" "pronoun.is/ze/zir?or=she")]
-     [:p "Pronomen-si.nd ist freie Software unter der "
+     [:p "Pronomen-i.sd ist freie Software unter der "
          (href "https://www.gnu.org/licenses/agpl.html" "AGPLv3")
          "! Besuche das Projekt auf "
-         (href "https://github.com/eribloodlust/pronomen-si.nd" "github")]
+         (href "https://github.com/eribloodlust/pronomen-i.st" "github")]
      [:p "<3"]]))
 
 (defn footer-block []
@@ -125,7 +125,7 @@
 (defn format-pronoun-examples
   [pronoun-declensions]
   (let [sub-objs (map #(s/join "/" (take 2 %)) pronoun-declensions)
-        title (str "Pronomen-si.nd: " (prose-comma-list sub-objs) " Beispiele")]
+        title (str "Pronomen-i.st: " (prose-comma-list sub-objs) " Beispiele")]
     (html
      [:html
       [:head
@@ -152,7 +152,7 @@
 (defn front []
   (let [abbreviations (u/abbreviate *pronouns-table*)
         links (map make-link abbreviations)
-        title "Pronomen-si.nd"]
+        title "Pronomen-i.st"]
     (html
      [:html
       [:head
@@ -162,13 +162,13 @@
       [:body
        (header-block title)
        [:div {:class "section table"}
-       [:p "pronomen-si.nd ist eine Webseite für Benutzungsbeispiele von Personalpronomen."]
+       [:p "'Pronomen-i.st' ist eine Webseite für Benutzungsbeispiele von Personalpronomen."]
        [:p "Hier sind ein paar Pronomen die diese Seite kennt:"]
        [:ul links]]]
       (footer-block)])))
 
 (defn not-found []
-  (let [title "Pronomen-si.nd: Deutsche Sprachbeispiele"]
+  (let [title "Pronomen-i.st: Deutsche Sprachbeispiele"]
     (html
      [:html
       [:head

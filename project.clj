@@ -1,6 +1,6 @@
 (defproject witch-house/pronouns "1.10.0-SNAPSHOT"
   :description "_____"
-  :url "http://pronoun.is"
+  :url "http://pronomen-i.st"
   :license "GNU Affero General Public License 3.0"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.8"]
