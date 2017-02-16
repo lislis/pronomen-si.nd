@@ -102,7 +102,7 @@
    [:p ""
        [:tt "http://pronoun.is/nominativ/genetiv/akkusativ/dativ/possessiv/relativ-nominativ/relativ-dativ"]
        " zeigt Beispielesätze für ein beliebiges Pronomen an."]
-   [:p "Das ist noch etwas umständlich. Wenn das Pronomen, das du verwendest, bereits in unserem System enthalten ist, reicht es, lediglich den Nominativ einzugaben."]])
+   [:p "Das ist noch etwas umständlich. Wenn das Pronomen, das du verwendest, bereits in unserem System enthalten ist, reicht es, lediglich den Nominativ einzugeben."]])
 
 (defn contact-block []
   (let [twitter-name (fn [handle] (href (str "https://www.twitter.com/" handle)
